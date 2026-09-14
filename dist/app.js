@@ -1,0 +1,12 @@
+import {header,hero} from './components/hero.js';
+import {config} from './config.js';
+import {services,offer} from './components/services.js';
+import {portfolio} from './components/portfolio.js';
+import {journey} from './components/journey.js';
+import {testimonialsSection,contact} from './components/contact.js';
+document.querySelector('#app').innerHTML = header()+hero();
+document.querySelector('#hero-art').innerHTML = '<img src="./hero.png" width="1536" height="1024" alt="Notebook e smartphone exibindo as versões desktop e mobile do mesmo site Nexo" fetchpriority="high">';
+document.querySelector('#remaining').innerHTML=services()+offer()+portfolio()+journey()+testimonialsSection()+contact();
+document.addEventListener('click',e=>{if(e.target.closest('[data-instagram]')){if(config.instagram)window.open(config.instagram,'_blank','noopener,noreferrer');else document.querySelector('#instagram-dialog').showModal();}});
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(el=>{el.classList.add('will-reveal');observer.observe(el)});
+document.addEventListener('click', e=>{const menu=e.target.closest('.menu-toggle');if(menu){const expanded=menu.getAttribute('aria-expanded')==='true';menu.setAttribute('aria-expanded',String(!expanded));document.querySelector('nav').classList.toggle('open',!expanded);}if(e.target.closest('nav a')){document.querySelector('nav').classList.remove('open');document.querySelector('.menu-toggle').setAttribute('aria-expanded','false');}if(e.target.closest('[data-contact]')){if(config.whatsapp){window.open(`https://wa.me/${config.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent(config.message)}`,'_blank','noopener,noreferrer');}else{document.querySelector('#contact-dialog')?.showModal();}}});
