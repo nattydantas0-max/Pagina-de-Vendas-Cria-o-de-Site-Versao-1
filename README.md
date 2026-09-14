@@ -11,3 +11,9 @@ Página estática modular, sem banco de dados ou dependências de instalação.
 WhatsApp e Instagram estão vazios intencionalmente. Os botões mostram um aviso temporário até que sejam preenchidos. Os depoimentos são fictícios, identificados na página e no código, e devem ser substituídos por depoimentos autorizados antes da divulgação. O portfólio apresenta conceitos, sem alegar clientes reais.
 
 Sirva `dist` com qualquer servidor HTTP. O site usa módulos JavaScript; abrir o HTML diretamente pelo sistema de arquivos não é suficiente.
+
+## Publicação na Vercel
+
+O arquivo `vercel.json` configura a publicação estática da pasta `dist`, sem instalação ou compilação. Importe este repositório com a raiz do projeto na raiz do repositório e a branch de produção `main`. Cada push para `main` dispara a publicação pela integração GitHub/Vercel.
+
+O HTML de entrada está em `dist/index.html`; publicar a raiz do repositório em vez de `dist` causa erro 404 na página inicial.
