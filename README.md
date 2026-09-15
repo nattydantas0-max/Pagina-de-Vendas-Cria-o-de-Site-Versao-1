@@ -1,4 +1,4 @@
-# Nexo — página de vendas
+# MR Agência de Marketing — página de vendas
 
 Página estática modular, sem banco de dados ou dependências de instalação.
 
